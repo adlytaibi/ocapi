@@ -69,7 +69,7 @@ In the event of lack communication with OnCommand API Services, the cached data 
 
   ![](https://raw.githubusercontent.com/adlytaibi/ss/master/ocapi/cluster_nodes.png)
 
-8. Aggregates' and aggregates' volumes' view:
+8. Aggregates' view:
 
   ![](https://raw.githubusercontent.com/adlytaibi/ss/master/ocapi/aggregates.png)
 
@@ -77,15 +77,19 @@ In the event of lack communication with OnCommand API Services, the cached data 
 
   ![](https://raw.githubusercontent.com/adlytaibi/ss/master/ocapi/svms.png)
 
-10. Volumes' view at cluster and aggregate level:
+10. Volumes' view at the cluster level:
 
   ![](https://raw.githubusercontent.com/adlytaibi/ss/master/ocapi/volumes.png)
 
+11. Volumes' view at an SVM level:
+
   ![](https://raw.githubusercontent.com/adlytaibi/ss/master/ocapi/svms_volumes.png)
+
+12. Volumes' view at an aggregate level:
 
   ![](https://raw.githubusercontent.com/adlytaibi/ss/master/ocapi/aggregates_volumes.png)
 
-11. Interfaces' view:
+13. Interfaces' view:
 
   ![](https://raw.githubusercontent.com/adlytaibi/ss/master/ocapi/interfaces.png)
 
