@@ -48,9 +48,7 @@ In the event of lack communication with OnCommand API Services, the cached data 
     docker-compose up -d
     ```
 
-    * Note: The use of host networking is only needed when running this docker container on OnCommand API Services server.
-      You can delete the line `network_mode: host` from `docker-compose.yml` when running this container elsewhere.
-      Also, keep in mind that this container is configured by default to listen on port 443. Therefore, the OnCommand API Services server should be running on port 8443 for example.
+    * Note: This container uses docker's bridge networking by default. When running this container on the OnCommand API Services server, the line `network_mode: host` in `docker-compose.yml` should be uncommented. Also, keep in mind that this container is configured by default to listen on port 443. Therefore, the OnCommand API Services server should be listening on port 8443 for example.
 
 4. The login page can be accessed using the URL below:
 
