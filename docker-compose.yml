@@ -4,5 +4,6 @@ services:
   web:
     restart: always
     build: web
+    network_mode: host
     ports:
       - 443:443

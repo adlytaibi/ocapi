@@ -4,6 +4,7 @@ COPY src/ /var/www/html/
 COPY apache2/servername.conf /etc/apache2/conf-available/
 COPY apache2/security.conf /etc/apache2/conf-available/
 COPY apache2/ssl.conf /etc/apache2/mods-available/
+COPY apache2/ports.conf /etc/apache2/
 COPY php/php.ini /usr/local/etc/php/
 COPY sslkeys/host.pem /etc/ssl/certs/ssl-cert-snakeoil.pem
 COPY sslkeys/host.key /etc/ssl/private/ssl-cert-snakeoil.key
