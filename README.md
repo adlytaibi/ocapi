@@ -36,57 +36,57 @@ In the event of lack communication with OnCommand API Services, the cached data 
 
     1. Self-sign your own certificates: (modify `web` to match your server)
 
-    ```
-    openssl req -x509 -nodes -newkey rsa:4096 -keyout web/sslkeys/host.key -out web/sslkeys/host.pem -days 365 -subj "/C=CA/ST=Ontario/L=Toronto/O=Storage/OU=Team/CN=web"
-    ```
+        ```
+        openssl req -x509 -nodes -newkey rsa:4096 -keyout web/sslkeys/host.key -out web/sslkeys/host.pem -days 365 -subj "/C=CA/ST=Ontario/L=Toronto/O=Storage/OU=Team/CN=web"
+        ```
 
     2. Or sign your SSL certificate with a CA:
 
-    * Create private key, generate a certificate signing request
+        * Create private key, generate a certificate signing request
 
-    ```
-    openssl genrsa -out web/sslkeys/host.key 2048
-    ```
+        ```
+        openssl genrsa -out web/sslkeys/host.key 2048
+        ```
 
-    * Create a Subject Alternate Name configuration file
+        * Create a Subject Alternate Name configuration file
 
-    ```
-    cat san.cnf
-    [req]
-    distinguished_name = req_distinguished_name
-    req_extensions = v3_req
-    prompt = no
-    default_md = sha256
-    [req_distinguished_name]
-    C = CA
-    ST = Ontario
-    L = Toronto
-    O = Storage
-    OU = Storage
-    CN = ocapi
-    [v3_req]
-    keyUsage = keyEncipherment, dataEncipherment
-    extendedKeyUsage = serverAuth
-    subjectAltName = @alt_names
-    [alt_names]
-    DNS.1 = ocapi
-    DNS.2 = ocapi.acme.net
-    IP.1 = 1.2.3.4
-    ```
+        ```
+        cat san.cnf
+        [req]
+        distinguished_name = req_distinguished_name
+        req_extensions = v3_req
+        prompt = no
+        default_md = sha256
+        [req_distinguished_name]
+        C = CA
+        ST = Ontario
+        L = Toronto
+        O = Storage
+        OU = Storage
+        CN = ocapi
+        [v3_req]
+        keyUsage = keyEncipherment, dataEncipherment
+        extendedKeyUsage = serverAuth
+        subjectAltName = @alt_names
+        [alt_names]
+        DNS.1 = ocapi
+        DNS.2 = ocapi.acme.net
+        IP.1 = 1.2.3.4
+        ```
 
-    * Generate a certificate signing request
+        * Generate a certificate signing request
 
-    ```
-    openssl req -new -sha256 -nodes -key host.key -out ocapi.csr -config san.cnf
-    ```
+        ```
+        openssl req -new -sha256 -nodes -key host.key -out ocapi.csr -config san.cnf
+        ```
 
-    * In your CA portal use the `ocapi.csr` output and the following SAN entry to sign the certificate, you should get a `certnew.pem` that can be saved as host.pem
+        * In your CA portal use the `ocapi.csr` output and the following SAN entry to sign the certificate, you should get a `certnew.pem` that can be saved as host.pem
 
-    ```
-    san:dns=ocapi.acme.net&ipaddress=1.2.3.4
-    ```
+        ```
+        san:dns=ocapi.acme.net&ipaddress=1.2.3.4
+        ```
 
-    * Copy your `host.pem` certificate files to `web/sslkeys`
+        * Copy your `host.pem` certificate files to `web/sslkeys`
 
 3. docker-compose
 
