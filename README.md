@@ -48,10 +48,9 @@ In the event of lack communication with OnCommand API Services, the cached data 
         openssl genrsa -out web/sslkeys/host.key 2048
         ```
 
-        * Create a Subject Alternate Name configuration file
+        * Create a Subject Alternate Name configuration file `san.cnf`
 
         ```
-        cat san.cnf
         [req]
         distinguished_name = req_distinguished_name
         req_extensions = v3_req
