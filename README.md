@@ -34,7 +34,13 @@ In the event of lack communication with OnCommand API Services, the cached data 
     mkdir web/sslkeys
     ```
 
-    * CA sign your SSL certificate
+    1. Self-sign your own certificates: (modify `web` to match your server)
+
+    ```
+    openssl req -x509 -nodes -newkey rsa:4096 -keyout web/sslkeys/host.key -out web/sslkeys/host.pem -days 365 -subj "/C=CA/ST=Ontario/L=Toronto/O=Storage/OU=Team/CN=web"
+    ```
+
+    2. Or sign your SSL certificate with a CA:
 
     * Create private key, generate a certificate signing request
 
@@ -81,12 +87,6 @@ In the event of lack communication with OnCommand API Services, the cached data 
     ```
 
     * Copy your `host.pem` certificate files to `web/sslkeys`
-
-    * (Optionally) Self-sign your own certificates (modify `web` to match your server)
-
-    ```
-    openssl req -x509 -nodes -newkey rsa:4096 -keyout web/sslkeys/host.key -out web/sslkeys/host.pem -days 365 -subj "/C=CA/ST=Ontario/L=Toronto/O=Storage/OU=Team/CN=web"
-    ```
 
 3. docker-compose
 
