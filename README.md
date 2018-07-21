@@ -48,7 +48,7 @@ In the event of lack communication with OnCommand API Services, the cached data 
             openssl genrsa -out web/sslkeys/host.key 2048
             ```
 
-        2. Create a Subject Alternate Name configuration file `san.cnf`
+        2. Create a Subject Alternate Name configuration file `san.cnf` in 'web/sslkeys'
 
             ```
             [req]
@@ -76,6 +76,7 @@ In the event of lack communication with OnCommand API Services, the cached data 
         3. Generate a certificate signing request
 
             ```
+            cd web/sslkeys/
             openssl req -new -sha256 -nodes -key host.key -out ocapi.csr -config san.cnf
             ```
 
